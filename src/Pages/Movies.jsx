@@ -5,20 +5,21 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom";
 
 export const Movies = () => {
-    const [moviesArray, setMoviesArray] = useState([]);
-    const [searchValue, setSearchValue] = useState('');
-    // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams('');
-
+    const query = searchParams.get('query');
+    const [searchValue, setSearchValue] = useState(query ? query : '');
+    const [moviesArray, setMoviesArray] = useState([]);
     useEffect(() => {
        async function fetchMoviesList (value) {
            const moviesArray = await fetchListByQuery(value);
            
            setMoviesArray([...moviesArray]);
        }
-       if (searchValue !== '') {
-            fetchMoviesList(searchValue)
+    
+       if (searchValue === '') {
+          return  
        }
+       fetchMoviesList(searchValue)
     
     }, [searchValue])
 
@@ -35,8 +36,7 @@ export const Movies = () => {
     return (
         <>
         <SearchForm onSubmit={saveSearchValue}/>
-        <MoviesList movies={moviesArray}/>
-        
+        <MoviesList movies={moviesArray}/>        
         </>
     )
 }

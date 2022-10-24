@@ -13,26 +13,28 @@ export const Reviews = () => {
                 const reviewsArr = await fetchReviewsById(id);
                 
                 setReviews([...reviewsArr]);
-                console.log(reviews);
             } catch(error) {
                 console.log(error);
             }
         }
 
         fetchReviews(movieId)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])
 
     return (
+        <>
+        {reviews.length > 0 ? 
         <ul>
             {reviews.map(review => {
                 return (
-                <li>
+                <li key ={review.id}>
                     <h3>{review.author}</h3>
                     <p>{review.content}</p>
                 </li>)
-            })}
-            
-        </ul>
+            })}    
+        </ul> 
+        : <p>We don't have any reviews for this movie. You can be first</p>}
+        </>
+        
     )
 }

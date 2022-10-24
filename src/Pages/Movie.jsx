@@ -1,13 +1,13 @@
 import { fetchMovieById } from "Api";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
-
+import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 
 
 export const Movie = () => { 
     const { movieId } = useParams();
     const [movie, setMovie] = useState({});
+    const location = useLocation();
 
     useEffect(() => {
         
@@ -15,7 +15,16 @@ export const Movie = () => {
             try {
                 
                 const movie = await fetchMovieById(id);
-                setMovie(movie);
+               
+                setMovie({
+                    imgUrl: `https://image.tmdb.org/t/p/w500/${movie['poster_path']}`,
+                    rating: Math.floor(movie["vote_average"] * 10),
+                    genres: movie.genres.map(genre => genre.name).join(' '),
+                    title: movie.title,
+                    owerview: movie.owerview,
+                    year: movie["release_date"].slice(0, 4)
+
+                });
                 
             } catch(error) {
                 console.log(error);
@@ -27,23 +36,19 @@ export const Movie = () => {
     }, [movieId]
 
     )
-    
-    const imgUrl = `https://image.tmdb.org/t/p/w500/${movie['poster_path']}`;
-    const rating = Math.floor(movie["vote_average"] * 10);
-    const genres = movie.genres.map(genre => genre.name).join(' ');
 
     return (
        
-        <>
-            <button type="button">icon Go back</button>
+        <main>
+            <Link to={location.state?.from ?? "/movies"}>icon Go back</Link>
             <div>
-                <img src={imgUrl} alt="" />
-                <h2>{movie.title}</h2>
-                <p>User score: {rating}%</p>
+                <img src={movie.imgUrl} alt="" />
+                <h2>{movie.title} ({movie.year})</h2>
+                <p>User score: {movie.rating}%</p>
                 <h3>Owerview</h3>
                 <p>{movie.owerview}</p>
                 <h3>Genres</h3>
-                <p>{genres}</p>
+                <p>{movie.genres}</p>
             </div>
         
             <p>Additional information</p>
@@ -52,6 +57,6 @@ export const Movie = () => {
                 <li><Link to='reviews'>Reviews</Link></li>
             </ul>
             <Outlet />
-        </>
+        </main>
     )
 }

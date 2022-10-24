@@ -13,12 +13,12 @@ export const SearchForm = ({ onSubmit }) => {
             return
         } 
         onSubmit(searchValue);
-
+        setSearchValue('');
     }
     
     return (
         <form onSubmit={submitForm}>
-            <input type="text" onChange={saveInputValue}/>
+            <input type="text" onChange={saveInputValue} value={searchValue}/>
             <button type="submit">Search</button>
         </form>)
 }
