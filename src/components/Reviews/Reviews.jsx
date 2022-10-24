@@ -20,6 +20,7 @@ export const Reviews = () => {
         }
 
         fetchReviews(movieId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])
 
     return (

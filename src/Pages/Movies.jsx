@@ -7,8 +7,8 @@ import { useSearchParams } from "react-router-dom";
 export const Movies = () => {
     const [moviesArray, setMoviesArray] = useState([]);
     const [searchValue, setSearchValue] = useState('');
+    // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams('');
-    const query = searchParams.get('query');
 
     useEffect(() => {
        async function fetchMoviesList (value) {
