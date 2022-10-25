@@ -3,8 +3,9 @@ import { MoviesList } from "components/MoviesList/MoviesList";
 import { SearchForm } from "components/SearchForm/SearchForm"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom";
+import { Container } from "./Home.styled";
 
-export const Movies = () => {
+const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams('');
     const query = searchParams.get('query');
     const [searchValue, setSearchValue] = useState(query ? query : '');
@@ -34,9 +35,13 @@ export const Movies = () => {
     };
     
     return (
-        <>
+        <main>
+        <Container>
         <SearchForm onSubmit={saveSearchValue}/>
         <MoviesList movies={moviesArray}/>        
-        </>
+        </Container>
+        </main>
     )
 }
+
+export default Movies;

@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
+import { HeaderStyled, StyledLink } from './Header.styled';
 
 export const Header = () => {
     return (
-        <header>
+        <HeaderStyled>
             <nav>
-                <Link to='/'>Home</Link>
-                <Link to='movies'>Movies</Link>
+                <StyledLink to='/'>Home</StyledLink>
+                <StyledLink to='movies'>Movies</StyledLink>
             </nav> 
-        </header>
+        </HeaderStyled>
     )
 }

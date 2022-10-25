@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export const SearchForm = ({ onSubmit }) => {
     const [searchValue, setSearchValue] = useState('');
@@ -21,4 +22,8 @@ export const SearchForm = ({ onSubmit }) => {
             <input type="text" onChange={saveInputValue} value={searchValue}/>
             <button type="submit">Search</button>
         </form>)
+}
+
+SearchForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 }

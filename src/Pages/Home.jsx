@@ -2,8 +2,9 @@ import { fetchTrendingToday } from "Api";
 import { MoviesList } from "components/MoviesList/MoviesList"
 import { useEffect } from "react";
 import { useState } from "react"
+import { Container } from "./Home.styled";
 
-export const Home = () => {
+const Home = () => {
 
     const [movies, setMovies] = useState([]);
 
@@ -25,8 +26,12 @@ export const Home = () => {
 
     return (
         <main>
+          <Container>
             <h2>Trending today</h2>
             <MoviesList movies={movies}/>
+          </Container>
         </main>
     )
 }
+
+export default Home
