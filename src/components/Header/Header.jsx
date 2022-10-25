@@ -4,7 +4,7 @@ export const Header = () => {
     return (
         <HeaderStyled>
             <nav>
-                <StyledLink to='/'>Home</StyledLink>
+                <StyledLink to='/' end>Home</StyledLink>
                 <StyledLink to='movies'>Movies</StyledLink>
             </nav> 
         </HeaderStyled>
