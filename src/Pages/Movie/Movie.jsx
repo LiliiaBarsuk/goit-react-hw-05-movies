@@ -17,7 +17,6 @@ const Movie = () => {
             try {
                 
                 const movie = await fetchMovieById(id);
-                console.log(movie);
                
                 setMovie({
                     imgUrl: `https://image.tmdb.org/t/p/w500/${movie['poster_path']}`,
