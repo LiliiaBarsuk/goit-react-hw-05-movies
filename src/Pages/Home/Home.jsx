@@ -2,7 +2,7 @@ import { fetchTrendingToday } from "Api";
 import { MoviesList } from "components/MoviesList/MoviesList"
 import { useEffect } from "react";
 import { useState } from "react"
-import { Container } from "./Home.styled";
+import { Container } from "./Home/Home.styled";
 
 const Home = () => {
 

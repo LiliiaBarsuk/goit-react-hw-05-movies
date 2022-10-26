@@ -1,7 +1,7 @@
 import { fetchMovieById } from "Api";
 import { useEffect, Suspense, useState } from "react";
 import { Link, Outlet, useParams, useLocation } from "react-router-dom";
-import { AdditionalInfo, LinkStyled, MovieContainer, MovieDetails } from "./Movie.styled";
+import { AdditionalInfo, LinkStyled, MovieContainer, MovieDetails } from "./Movie/Movie.styled";
 
 
 const Movie = () => { 
