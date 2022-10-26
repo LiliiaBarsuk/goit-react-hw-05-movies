@@ -3,7 +3,7 @@ import { MoviesList } from "components/MoviesList/MoviesList";
 import { SearchForm } from "components/SearchForm/SearchForm"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom";
-import { Container } from "./Home.styled";
+import { Container } from "./Home/Home.styled";
 
 const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams('');
