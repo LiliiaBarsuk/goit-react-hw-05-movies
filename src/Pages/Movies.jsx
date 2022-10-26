@@ -12,9 +12,13 @@ const Movies = () => {
     const [moviesArray, setMoviesArray] = useState([]);
     useEffect(() => {
        async function fetchMoviesList (value) {
-           const moviesArray = await fetchListByQuery(value);
+        try {
+            const moviesArray = await fetchListByQuery(value);
+            setMoviesArray([...moviesArray]);
+        } catch(error) {
+            console.log(error);
+        }
            
-           setMoviesArray([...moviesArray]);
        }
     
        if (searchValue === '') {
