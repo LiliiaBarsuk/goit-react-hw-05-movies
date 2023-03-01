@@ -30,7 +30,7 @@ const Movies = () => {
 
     const saveSearchValue = (value) => {
         if(value === '') {
-            return
+        return
         }
 
         setSearchValue(value);
