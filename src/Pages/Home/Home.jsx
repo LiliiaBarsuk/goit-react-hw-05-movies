@@ -2,12 +2,12 @@ import { fetchTrendingToday } from "Api";
 import { MoviesList } from "components/MoviesList/MoviesList"
 import { useEffect } from "react";
 import { useState } from "react"
-import { Container } from "./Home.styled.jsx";
+import { Container, Title } from "./Home.styled.jsx";
 
 const Home = () => {
 
     const [movies, setMovies] = useState([]);
-
+    console.log(movies);
     useEffect(() => {
         async function fetchMovies() {
             try {
@@ -27,7 +27,7 @@ const Home = () => {
     return (
         <main>
           <Container>
-            <h2>Trending today</h2>
+            <Title>Trending today</Title>
             <MoviesList movies={movies}/>
           </Container>
         </main>
