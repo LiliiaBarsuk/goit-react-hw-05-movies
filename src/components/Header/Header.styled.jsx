@@ -7,7 +7,13 @@ export const HeaderStyled = styled.header`
   background-color: #080808;
 `; 
 
+export const NavStyled = styled.nav`
+  display: flex;
+  align-items: center;
+`;
+
 export const LogoStyled = styled.img`
+  display: block;
   margin-right: 40px;
   height: 30px;
 `;

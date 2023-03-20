@@ -15,7 +15,7 @@ export const LinkStyled = styled(Link)`
 
 export const MovieContainer = styled.div`
     padding-top: 20px;
-
+    height: 100%;
 `;
 
 export const MovieDetails = styled.div`
